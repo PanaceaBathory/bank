@@ -1,7 +1,7 @@
 from uuid import uuid4
 from flask import Flask, request, make_response
 from typing import Dict, TypedDict
-
+from flask_cors import CORS
 
 class BankEntry(TypedDict):
     id: str
@@ -12,7 +12,7 @@ class BankEntry(TypedDict):
 entries: Dict[str, BankEntry] = {'potato':{'id':'potato', 'description':'potat', 'amount': 100 }}
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def listing(): return entries
